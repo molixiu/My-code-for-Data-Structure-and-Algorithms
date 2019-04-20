@@ -1,3 +1,4 @@
+/*插入排序是稳定的*/
 #define _CRT_SECURE_NO_DEPRECATE
 #include<stdio.h>
 #include<time.h>
