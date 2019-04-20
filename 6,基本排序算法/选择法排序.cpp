@@ -1,3 +1,4 @@
+/*选择排序是不稳定的*/
 #define _CRT_SECURE_NO_DEPRECATE
 #include<stdio.h>
 #include<time.h>
@@ -63,7 +64,7 @@ int main()
 	long start_t = getCurrenTime();
 	selectSort(arr, MAX);
 	long end_t = getCurrenTime();
-	printf("%����ʱ������ld\n", end_t - start_t);
+	printf("%ÅÅÐòÊ±¼äÓÃÁËld\n", end_t - start_t);
 	printArr(arr, MAX);
 	return 0;
 }
