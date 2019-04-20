@@ -1,3 +1,4 @@
+/*鍐掓场鎺掑簭鏄ǔ瀹氱殑*/
 #define _CRT_SECURE_NO_DEPRECATE
 #include<stdio.h>
 #include<time.h>
@@ -60,7 +61,7 @@ void test()
 	long start_t = getCurrenTime();
 	bubbleArr(arr, MAX);
 	long end_t = getCurrenTime();
-	printf("%排序时间用了ld\n", end_t - start_t);
+	printf("%脜脜脨貌脢卤录盲脫脙脕脣ld\n", end_t - start_t);
 	printArr(arr, MAX);
 }
 
