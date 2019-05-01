@@ -1,4 +1,4 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 
 struct BinaryNode
 {
@@ -7,16 +7,16 @@ struct BinaryNode
 	struct BinaryNode *rchild;
 };
 	
-void rlrRecursion(struct BinaryNode *root)
+int get_binaryHigh(struct BinaryNode *root)
 {
 	if (root == NULL)
 	{
-		return;
+		return 0;
 	}
 	
-	printf("%c ", root->ch);
-	rlrRecursion(root->lchild);
-	rlrRecursion(root->rchild);
+	int left = get_binaryHigh(root->lchild);
+	int right = get_binaryHigh(root->rchild);
+	return left > right ? left + 1 : right + 1;
 }
 
 int main () {
@@ -36,7 +36,8 @@ int main () {
 	bNodeF.rchild = &bNodeG;
 	bNodeG.lchild = &bNodeH;
 
-	rlrRecursion(&bNodeA);
+	int high = get_binaryHigh(&bNodeA);
+	printf("%d\n", high);
 	
 	return 0;
 }
