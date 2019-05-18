@@ -73,7 +73,7 @@ int compare_operator(char *c1, char *c2)	//比较两个运算符的等级
 {
 	int cc1 = operator_transform_grade(c1);
 	int cc2 = operator_transform_grade(c2);
-	return cc1 >= cc2 ? TRUE : FALSE;
+	return cc1 > cc2 ? TRUE : FALSE;
 }
 
 void operate_operator(myStack *stack, char *suffix, int *index, char *pCurren)
@@ -81,7 +81,7 @@ void operate_operator(myStack *stack, char *suffix, int *index, char *pCurren)
 	myChar *mychar = (myChar *)top_myStack(stack);
 	if (mychar != NULL)
 	{
-		while (!compare_operator(pCurren, &mychar->ch))
+		while (mychar != NULL !compare_operator(pCurren, &mychar->ch))
 		{
 			myChar *temp = (myChar *)top_myStack(stack);
 			suffix[(*index)++] = temp->ch;

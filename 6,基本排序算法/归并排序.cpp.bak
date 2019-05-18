@@ -52,7 +52,6 @@ void merge(int arr[], int start, int mid, int end, int *temp)
 	}
 }
 
-//ÎÈ¶¨ÅÅĞò
 void mergeSort(int arr[], int start, int end, int *temp)
 {
 	if (start == end)
