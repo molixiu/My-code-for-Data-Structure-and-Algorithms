@@ -1,32 +1,53 @@
-#include<stdlib.h>
 #include<stdio.h>
+#include<graphics.h>
 
-#define MAXVERTEX 1000
-typedef int DATA;
+typedef int VertexData;
 
-typedef struct arc_head //边表节点
+//邻接点
+typedef struct EdgeNode{	
+	int adjvex;	//邻接点的下标
+	int weight;	//权重
+	EdgeNode *next;
+} EdgeNode;
+
+//顶点节点
+typedef struct VertexNode{
+	VertexData data;	//数据域
+	EdgeNode *firstEdge;	//边表头指针
+} VertexNode;
+
+//邻接表
+typedef struct GraphAdjList{
+	VertexNode *vertexNodeList;	//指向一个顶点节点数组
+	int vertexNodeSize;	//节点多少
+	int edgeNodeSize;	//边多少
+} GraphAdjList;
+
+
+/*深度优先遍历邻接表
+	G 邻接表
+	i 当前顶点的下标
+	visited[] 访问标志的数组 为0表示该顶点未被访问过, 为1则被访问过
+*/
+void DFS(GraphAdjList *G, int i, int visited[])
 {
-	int arc_head_addr;	//弧头下标	
-	struct arc_head *next;
-} arc_element;
+	VertexNode *vertexNode = (G->vertexNodeList + i);	//当前节点	(弧尾)
+	printf("%d\n", vertexNode->data);	//打印当前节点的数据
+	visited[i] = 1;	
 
-typedef struct vertex	//顶点表节点
-{
-	DATA data;	//顶点的数据 
-	struct arc_head *arc_head;
-} vertex;
+	EdgeNode *edgeNode = vertexNode->firstEdge;	
+	int edgeNode_index = -1;	//弧头的下标
+	while(edgeNode != NULL)
+	{
+		edgeNode_index = edgeNode->adjvex;
+		if( visited[ edgeNode_index ] == 0 )
+			DFS(G, edgeNode_index, visited);
+		edgeNode = edgeNode->next;
+	}
+}
 
-typedef struct graphAdjList
-{
-	struct vertex vertexs[MAXVERTEX];	//顶点数组
-	int numVertex, numArc_head;			//顶点和 边数量
-} grapAdjList;
-
-#if 0
 int main()
-{ 
+{
 
-	
 	return 0;
 }
-#endif
