@@ -1,6 +1,5 @@
-#ifndef _MYVECTOR_H
+ï»¿#ifndef _MYVECTOR_H
 #define _MYVECTOR_H
-#endif
 
 #include<stdlib.h>
 #include<string.h>
@@ -15,15 +14,19 @@ typedef struct dynamicArray
 	int capacity;
 } dynamicArray;
 
-//³õÊ¼»¯¶¯Ì¬Êı×é
+//åˆå§‹åŒ–åŠ¨æ€æ•°ç»„
 dynamicArray init_dynamicArray();
-//ÏòÊı×é×îºóÔö¼ÓÔªËØ
+//å‘æ•°ç»„æœ€åå¢åŠ å…ƒç´ 
 void push_back_dynamicArray(dynamicArray *da, int value);
-//ÒÆ³ö×îºóÒ»¸öÔªËØ
+//ç§»å‡ºæœ€åä¸€ä¸ªå…ƒç´ 
 void pop_back_dynamicArray(dynamicArray *da);
-//·µ»ØÖ¸¶¨Î»ÖÃÔªËØ
+//è¿”å›æŒ‡å®šä½ç½®å…ƒç´ 
 int at_dynamicArray(dynamicArray *da, int index);
-//Çå¿ÕÊı×éËùÓĞÔªËØ
+//æ¸…ç©ºæ•°ç»„æ‰€æœ‰å…ƒç´ 
 void clear_dynamicArray(dynamicArray *da);
-//ÊÍ·ÅÊı×é
+//é‡Šæ”¾æ•°ç»„
 void free_dynamicArray(dynamicArray *da);
+
+
+
+#endif

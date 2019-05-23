@@ -1,6 +1,6 @@
-#include"LinkedList.h"
+ï»¿#include"LinkedList.h"
 
-//´´½¨ÆóÒµÁ´±í
+//åˆ›å»ºä¼ä¸šé“¾è¡¨
 LinkedList init_LinkedList()
 {
 	LinkedList *list = (LinkedList *)malloc(sizeof(LinkedList));
@@ -8,7 +8,7 @@ LinkedList init_LinkedList()
 	list->length = 0;
 	return *list;
 }
-//Çå¿ÕÁ´±í
+//æ¸…ç©ºé“¾è¡¨
 void empty_LinkedList(LinkedList *list)
 {
 	if (list != NULL)
@@ -17,14 +17,14 @@ void empty_LinkedList(LinkedList *list)
 		list->length = 0;
 	}
 }
-//´ÓÁ´±íÖ¸¶¨Î»ÖÃ»ñµÃÔªËØ
+//ä»é“¾è¡¨æŒ‡å®šä½ç½®è·å¾—å…ƒç´ 
 void* getEle_fromLinkedList(LinkedList *list, int pos)
 {
 	if (list == NULL || pos < 0 || pos > list->length)
 	{
 		return NULL;
 	}
-	//¸¨ÖúÖ¸Õë
+	//è¾…åŠ©æŒ‡é’ˆ
 	LinkedNode *pCurren = (LinkedNode *)list;
 	for (int i = 0; i <= pos; i++)
 	{
@@ -32,7 +32,7 @@ void* getEle_fromLinkedList(LinkedList *list, int pos)
 	}
 	return pCurren;
 }
-//´ÓÁ´±íÖ¸¶¨Î»ÖÃ²åÈëÔªËØ
+//ä»é“¾è¡¨æŒ‡å®šä½ç½®æ’å…¥å…ƒç´ 
 void insertEle_toLinkedList(LinkedList *list, int pos, LinkedNode *node)
 {
 	if (list == NULL || node == NULL)
@@ -43,7 +43,7 @@ void insertEle_toLinkedList(LinkedList *list, int pos, LinkedNode *node)
 	{
 		pos = list->length - 1;
 	}
-	//¸¨ÖúÖ¸Õë
+	//è¾…åŠ©æŒ‡é’ˆ
 	LinkedNode *pCurren = (LinkedNode *)list;
 	for (int i = 0; i < pos; i++)
 	{
@@ -53,14 +53,14 @@ void insertEle_toLinkedList(LinkedList *list, int pos, LinkedNode *node)
 	node->next = pCurren->next;
 	pCurren->next = node;
 }
-//É¾³ıÁ´±íÖĞÄ³¸ö½Úµã
+//åˆ é™¤é“¾è¡¨ä¸­æŸä¸ªèŠ‚ç‚¹
 void deleteEle_fromLinkedList(LinkedList *list, LinkedNode *node)
 {
 	if (list == NULL || node == NULL)
 	{
 		return;
 	}
-	//¸¨ÖúÖ¸Õë
+	//è¾…åŠ©æŒ‡é’ˆ
 	LinkedNode *pCurren = (LinkedNode *)list;
 	LinkedNode *deleteNodePre = NULL;
 	for (int i = 0; i <= list->length; i++)
@@ -76,7 +76,7 @@ void deleteEle_fromLinkedList(LinkedList *list, LinkedNode *node)
 		deleteNodePre->next = deleteNodePre->next;
 	}
 }
-//Ïú»ÙÁ´±í
+//é”€æ¯é“¾è¡¨
 void destory_LinkedList(LinkedList *list)
 {
 	if (list == NULL)
@@ -84,10 +84,10 @@ void destory_LinkedList(LinkedList *list)
 		free(list);
 	}
 }
-//´òÓ¡Á´±í
+//æ‰“å°é“¾è¡¨
 void print_LinkedList( LinkedList *list, void(*p)(LinkedNode*) )
 {
-	//¸¨ÖúÖ¸Õë
+	//è¾…åŠ©æŒ‡é’ˆ
 	LinkedNode *pCurren = list->head;
 	while (pCurren != NULL)
 	{

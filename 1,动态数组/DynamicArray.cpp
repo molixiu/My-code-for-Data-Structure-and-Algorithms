@@ -1,4 +1,4 @@
-#include"DynamicArray.h"
+ï»¿#include"DynamicArray.h"
 #include<stdio.h>
 
 dynamicArray init_dynamicArray()
@@ -12,7 +12,7 @@ dynamicArray init_dynamicArray()
 
 void push_back_dynamicArray(dynamicArray *da, int value)
 {
-	if (da->capacity <= da->size)	//Èç¹ûÊý×éµÄÈÝÁ¿ÂúÁË
+	if (da->capacity <= da->size)	//å¦‚æžœæ•°ç»„çš„å®¹é‡æ»¡äº†
 	{
 		int temp_capacity = da->capacity * DEFAULT_DYNAMICARRAY_CAPACIYY_INCREASE;
 		int *temp_addr = (int *)malloc(temp_capacity*sizeof(int));

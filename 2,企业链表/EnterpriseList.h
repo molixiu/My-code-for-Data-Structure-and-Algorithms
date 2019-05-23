@@ -1,6 +1,5 @@
 #ifndef _LINKEDLIST_H
 #define _LINKEDLIST_H
-#endif
 
 #include<stdlib.h>
 
@@ -29,3 +28,5 @@ void deleteEle_fromLinkedList(LinkedList *list, LinkedNode *node);
 void destory_LinkedList(LinkedList *list);
 //¥Ú”°¡¥±Ì
 void print_LinkedList(LinkedList *list, void(*p)(LinkedNode*));
+
+#endif
