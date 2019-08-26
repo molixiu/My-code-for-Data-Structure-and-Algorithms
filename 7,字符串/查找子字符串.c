@@ -1,45 +1,60 @@
 ﻿/*KPM算法*/
-#define _CRT_SECURE_NO_DEPRECATE
 #include<stdio.h>
 #include<string.h>
+#include<stdlib.h>
 
-int compare_rString(char *fPcur, char *fEnd,  char *sPcur, char *sEnd)
-{
-	if( (fEnd - fPcur) < (sEnd - sPcur) )
-		return -1;
+void get_next(char *T, int *next);	//获得数组值
+int KMP(char *S, char *T);			//KMP算法
 
-	for(; sPcur <= sEnd && *sPcur == *fPcur; sPcur++,fPcur++);
-	if(sPcur <= sEnd)
-		return -1;
-	else
-		return 1;
+int main(){
+
+	char *T = "abababca";
+	char *S = "ca";
+
+	int n = KMP(T, S);
+	printf("%d\n",n);
+
+	return 0;
 }
 
-int find_sonString_position(char *father, char *son)
-{
-	char *fPcur = father;	
-	char *fEnd = father + ( strlen(father) - 1 );
-	char *sPcur = son;
-	char *sEnd = son + ( strlen(son) -1 );
-	int position = -1;
+void get_next(char *T, int *next){
+	int Tlen = strlen(T);
 
-	for(; fPcur<= fEnd; fPcur++)
-	{
-		if(*fPcur  == *sPcur)
-		{
-			sPcur = son;
-			position = compare_rString(fPcur, fEnd,  sPcur, sEnd);
-			if(position != -1)	//找到子字符串了
-				return fPcur - father;
+	int i = 1, j = 0;
+	next[0] = 0;
+	while(i < Tlen){
+		if(T[i] == T[j])
+			next[i++] = ++j;
+		else
+			next[i++] = j = 0;	
+	}
+
+	for(i = Tlen - 1; i >0; i--){
+		next[i] = next[i-1];
+	}
+}
+
+int KMP(char *S, char *T){
+	int Slen = strlen(S);
+	int Tlen = strlen(T);
+	int *next = (int *) malloc( Tlen * sizeof(int) );
+	get_next(T, next);
+	
+	int i = 0, j = 0;
+	while(j < Tlen && i < Slen){
+		if(T[j] == S[i]){
+			j++;
+			i++;
+		}else{
+			j = next[j];
+			if(T[j] != S[i])
+				i++;
 		}
 	}
-	return position;
-}
+	free(next);	//释放堆上分配的内存
 
-int main()
-{
-	char *father = "1234abcdefg";
-	char *son = "fgaa";
-	int position = find_sonString_position(father, son);
-	printf("%d\n", position);
+	if(j == Tlen)
+		return i - Tlen;
+	else
+		return -1;
 }
